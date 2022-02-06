@@ -23,7 +23,7 @@ export default function MinimumThirdAndFourthBimester() {
 
     function handleEndChangeText(text: string, callbackChange: React.Dispatch<React.SetStateAction<string | number | undefined>>) {
         if(!text) {
-            return callbackChange(text)
+            return callbackChange(0)
         }
         const min = 0;
         const max = 10;
