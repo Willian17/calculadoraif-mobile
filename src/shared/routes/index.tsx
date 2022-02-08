@@ -4,6 +4,8 @@ import MinimumThirdAndFourthBimester from '../../screens/MinimumThirdAndFourthBi
 import MinimumThirdBimester from '../../screens/MinimumThirdBimester';
 import { Feather, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import CustomDrawerContent from './CustomDrawerContent';
+import MinimumFourthBimester from '../../screens/MinimumFourthBimester';
+import MinimumPF from '../../screens/MinimumPF';
 
 const Drawer = createDrawerNavigator();
 
@@ -44,13 +46,13 @@ export default function Routes() {
                     drawerIcon: ({ color, size }) => (
                         <FontAwesome5 name="chart-line" size={size} color={color} />
                     )
-                }} component={MinimumThirdBimester} />
+                }} component={MinimumFourthBimester} />
                 <Drawer.Screen name="MinimumPF" options={{ 
                     drawerLabel: 'Mínimo na PF',
                     drawerIcon: ({ color, size }) => (
                         <FontAwesome5 name="gavel" size={size} color={color} />
                     )
-                }} component={MinimumThirdBimester} />
+                }} component={MinimumPF} />
                 <Drawer.Screen name="AverageBimester" options={{ 
                     drawerLabel: 'Média bimestral',
                     drawerIcon: ({ color, size }) => (

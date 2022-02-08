@@ -9,17 +9,17 @@ import { roundFloat } from "../shared/util/roundFloat";
 export default function MinimumThirdBimester() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
 
     useEffect(() => {
         setConfigScreen('Mínimo', 'Para ser aprovado no 3° bimestre');
-
+        setMaxValuePositiveResult(6);
     }, [])
 
     function handleCalculate() {
         setShowResult(true);
         const result = calculateMinimumThirdBimester(firstBimester as any, secondBimester as any) as any;
-        setMessageResult(result > 10 ? 'Não é possível ser aprovado no 3° bimestre' : 'Para ser aprovado no 3° bimestre');
+        setMessageResult(result > 10 ? 'Não é possível ser aprovado no 3° bimestre': 'Para ser aprovado no 3° bimestre');
         setResult(result);
     }
 
