@@ -9,15 +9,17 @@ import { useCalculate } from '../contexts/CalculateContext';
 export default function MinimumThirdAndFourthBimester() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
 
     useEffect(() => {
         setConfigScreen('Mínimo', 'Para ser aprovado no 3° e 4° bimestre');
+        setMaxValuePositiveResult(9.5);
     }, [])
 
     function handleCalculate() {
         setShowResult(true);
         const result = calculateMinimumThirdAndFourBimester(firstBimester as any, secondBimester as any) as any;
+        setMessageResult('Para ser aprovado no 3° e 4° bimestre');
         setResult(result);
     }
 

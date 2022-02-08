@@ -4,7 +4,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { useCalculate } from '../../contexts/CalculateContext';
 
 export default function ResultCalculate() {
-    const { result, setShowResult, title, subtitle } = useCalculate();
+    const { result, setShowResult, title, messageResult, maxValuePositiveResult } = useCalculate();
 
     function handleCloseResult() {
         setShowResult(false);
@@ -14,9 +14,9 @@ export default function ResultCalculate() {
         <View style={styles.containerResult}>
             <View style={styles.cardResult}>
                 <EvilIcons name="close" size={24} color="black" style={styles.iconCloseResult} onPress={handleCloseResult} />
-                <Text style={result && result > 6 ? styles.resultRed : styles.resultGreen}> {result} </Text>
+                <Text style={result && result <= maxValuePositiveResult ? styles.resultGreen : styles.resultRed}> {result} </Text>
                 <Text style={styles.titleResult}>{title}</Text>
-                <Text style={styles.subtileResult}>{subtitle}</Text>
+                <Text style={styles.subtileResult}>{messageResult}</Text>
                 <TouchableOpacity style={styles.buttonResult} onPress={handleCloseResult}>
                     <Text style={styles.textButtonResult}>Calcular Novamente</Text>
                 </TouchableOpacity>
