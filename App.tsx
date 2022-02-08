@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import MinimumThirdAndFourthBimester from './src/screens/MinimumThirdAndFourthBimester';
 import { useState } from 'react';
 import AppProvider from './src/contexts';
+import Routes from './src/shared/routes';
+import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -32,9 +33,7 @@ export default function App() {
   }
   return (
     <AppProvider>
-      <View style={styles.container}>
-        <MinimumThirdAndFourthBimester />
-      </View>
+     <Routes />
     </AppProvider>
   );
 }

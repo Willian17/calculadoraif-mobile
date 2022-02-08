@@ -7,7 +7,6 @@ export default function Header() {
     const { title, subtitle } = useCalculate();
     return (
         <View style={styles.header}>
-            <Feather style={styles.menu} name="menu" size={24} color="black" />
             <View style={styles.headerTitles}>
                 <Text style={styles.title}>Calculadora<Text style={styles.titleGreen}>IF</Text></Text>
                 <Text style={styles.subtile}>{title} {subtitle}</Text>
@@ -21,13 +20,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#FAFAFA',
         width: '100%',
         height: 250,
-        marginBottom: 30
+        marginBottom: 30,
+        marginTop: -50
     },
     headerTitles: {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
-        marginTop: 20
+        // marginTop: 20
     },
     menu: {
         position: 'absolute',
