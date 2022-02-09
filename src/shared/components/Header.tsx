@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#666666',
         width: '64%',
-        fontFamily: 'inter-regular'
+        fontFamily: 'inter-regular',
+        textAlign: 'center',
     },
 });

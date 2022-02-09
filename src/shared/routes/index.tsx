@@ -6,6 +6,7 @@ import { Feather, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import CustomDrawerContent from './CustomDrawerContent';
 import MinimumFourthBimester from '../../screens/MinimumFourthBimester';
 import MinimumPF from '../../screens/MinimumPF';
+import BimesterAverage from '../../screens/BimesterAverage';
 
 const Drawer = createDrawerNavigator();
 
@@ -58,7 +59,7 @@ export default function Routes() {
                     drawerIcon: ({ color, size }) => (
                         <FontAwesome5 name="chalkboard-teacher" size={size} color={color} />
                     )
-                }} component={MinimumThirdBimester} />
+                }} component={BimesterAverage} />
                 <Drawer.Screen name="AverageGeneral" options={{ 
                     drawerLabel: 'Média geral',
                     drawerIcon: ({ color, size }) => (

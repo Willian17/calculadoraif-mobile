@@ -10,7 +10,7 @@ export default function MinimumPF() {
     const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'Na PF');
+        setConfigScreen('Mínimo', 'na PF');
         setMaxValuePositiveResult(6);
     }, [])
 

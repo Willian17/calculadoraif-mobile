@@ -12,7 +12,7 @@ export default function MinimumThirdBimester() {
     const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'Para ser aprovado no 3° bimestre');
+        setConfigScreen('Mínimo', 'para ser aprovado no 3° bimestre');
         setMaxValuePositiveResult(6);
     }, [])
 

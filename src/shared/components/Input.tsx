@@ -7,21 +7,24 @@ interface IInputProps {
     onChangeText: React.Dispatch<React.SetStateAction<string | number | undefined>>;
     value: number | undefined | string;
     label: string;
+    max?: number;
 }
 
-export default function Input({value, onChangeText, label}: IInputProps) {
+export default function Input({ value, onChangeText, label, max }: IInputProps) {
     const iconInput = <TextInput.Icon name="school" color="#69B99D" />
 
     function handleEndChangeText(text: string, callbackChange: React.Dispatch<React.SetStateAction<string | number | undefined>>) {
-        if(!text) {
+        if (!text) {
             return callbackChange(0)
         }
-        const min = 0;
-        const max = 10;
+        const minValue = 0;
+        const maxValue = max || 10;
         let value: string | number = text;
         value = value?.replace(',', '.')
         value = +value;
-        value = value > max ? max : value < min ? min : value;
+        value = (value > maxValue ?
+            maxValue :
+            (value < minValue ? minValue : value));
         callbackChange(value)
     }
 

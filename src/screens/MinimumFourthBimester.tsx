@@ -12,7 +12,7 @@ export default function MinimumFourthBimester() {
     const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'Para ser aprovado no 4° bimestre');
+        setConfigScreen('Mínimo', 'para ser aprovado no 4° bimestre');
         setMaxValuePositiveResult(6);
     }, [])
 
