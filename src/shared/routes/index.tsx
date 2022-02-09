@@ -8,6 +8,7 @@ import MinimumFourthBimester from '../../screens/MinimumFourthBimester';
 import MinimumPF from '../../screens/MinimumPF';
 import BimesterAverage from '../../screens/BimesterAverage';
 import GeneralAverage from '../../screens/GeneralAverage';
+import EndAverage from '../../screens/EndAverage';
 
 const Drawer = createDrawerNavigator();
 
@@ -72,7 +73,7 @@ export default function Routes() {
                     drawerIcon: ({ color, size }) => (
                         <FontAwesome5 name="chess-queen" size={size} color={color} />
                     )
-                }} component={MinimumThirdBimester} />
+                }} component={EndAverage} />
             </Drawer.Navigator>
         </NavigationContainer>
     )
