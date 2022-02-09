@@ -7,6 +7,7 @@ import CustomDrawerContent from './CustomDrawerContent';
 import MinimumFourthBimester from '../../screens/MinimumFourthBimester';
 import MinimumPF from '../../screens/MinimumPF';
 import BimesterAverage from '../../screens/BimesterAverage';
+import GeneralAverage from '../../screens/GeneralAverage';
 
 const Drawer = createDrawerNavigator();
 
@@ -65,7 +66,7 @@ export default function Routes() {
                     drawerIcon: ({ color, size }) => (
                         <FontAwesome5 name="chart-pie" size={size} color={color} />
                     )
-                }} component={MinimumThirdBimester} />
+                }} component={GeneralAverage} />
                 <Drawer.Screen name="AverageEnd" options={{ 
                     drawerLabel: 'Média final',
                     drawerIcon: ({ color, size }) => (

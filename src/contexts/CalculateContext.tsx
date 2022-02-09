@@ -12,6 +12,8 @@ interface CalculateContextData {
     setMessageResult: React.Dispatch<React.SetStateAction<string>>;
     maxValuePositiveResult: number;
     setMaxValuePositiveResult: React.Dispatch<React.SetStateAction<number>>;
+    minValuePositiveResult: number;
+    setMinValuePositiveResult: React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface ICalculateProviderProps {
@@ -25,6 +27,7 @@ export function CalculateProvider({ children }: ICalculateProviderProps) {
     const [result, setResult] = useState(undefined);
     const [messageResult, setMessageResult] = useState('');
     const [maxValuePositiveResult, setMaxValuePositiveResult] = useState(6);
+    const [minValuePositiveResult, setMinValuePositiveResult] = useState(0);
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
 
@@ -36,7 +39,7 @@ export function CalculateProvider({ children }: ICalculateProviderProps) {
     return (
         <CalculateContext.Provider value={{
             showResult, setShowResult, result, setResult, setConfigScreen, title, subtitle, messageResult,
-            setMessageResult, setMaxValuePositiveResult, maxValuePositiveResult
+            setMessageResult, setMaxValuePositiveResult, maxValuePositiveResult, minValuePositiveResult, setMinValuePositiveResult
         }}>
             {children}
         </CalculateContext.Provider>

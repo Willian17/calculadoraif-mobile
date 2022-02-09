@@ -9,11 +9,12 @@ export default function MinimumFourthBimester() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
     const [thirdBimester, setThirdBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
 
     useEffect(() => {
         setConfigScreen('Mínimo', 'para ser aprovado no 4° bimestre');
         setMaxValuePositiveResult(6);
+        setMinValuePositiveResult(0);
     }, [])
 
     function handleCalculate() {

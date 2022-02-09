@@ -10,11 +10,12 @@ export default function BimesterAverage() {
     const [grade2, setGrade2] = useState<number | undefined | string>(undefined);
     const [grade3, setGrade3] = useState<number | undefined | string>(undefined);
     const [atitudinal, setAtitudinal] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
 
     useEffect(() => {
         setConfigScreen('Média', 'no bimestre');
-        setMaxValuePositiveResult(6);
+        setMaxValuePositiveResult(10);
+        setMinValuePositiveResult(6);
     }, [])
 
     function handleCalculate() {

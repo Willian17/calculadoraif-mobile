@@ -6,30 +6,33 @@ import Button from '../shared/components/Button';
 import Template from '../shared/components/Template';
 import { useCalculate } from '../contexts/CalculateContext';
 
-export default function MinimumThirdAndFourthBimester() {
+export default function GeneralAverage() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
+    const [thirdBimester, setThirdBimester] = useState<number | undefined | string>(undefined);
+    const [fourthBimester, setFourthBimester] = useState<number | undefined | string>(undefined);
     const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'para ser aprovado no 3° e 4° bimestre');
-        setMaxValuePositiveResult(9.5);
-        setMinValuePositiveResult(0);
+        setConfigScreen('Média Geral', ', todos os bimestres');
+        setMaxValuePositiveResult(10);
+        setMinValuePositiveResult(6);
     }, [])
 
     function handleCalculate() {
         setShowResult(true);
-        const result = calculateMinimumThirdAndFourBimester(firstBimester as any, secondBimester as any) as any;
-        setMessageResult('Para ser aprovado no 3° e 4° bimestre');
+        const result = calculateGeneralAverage(firstBimester as any, secondBimester as any, 
+            thirdBimester as any, fourthBimester as any) as any;
+        setMessageResult(result >= 6 ? 'Parabéns você está aprovado!' : 'Infelizmente você está de PF!');
         setResult(result);
     }
 
-    function calculateMinimumThirdAndFourBimester(gradeBimester1: number, gradeBimester2: number): number {
-        const minimumTotal = 60;
+    function calculateGeneralAverage(gradeBimester1: number, gradeBimester2: number, gradeBimester3: number, gradeBimester4: number): number {
         const weightBimester1And2 = 2;
-        const result: number = (minimumTotal -
-            ((+gradeBimester1 * weightBimester1And2) + (+gradeBimester2 * weightBimester1And2))) / 6
-        return roundFloat(result, -2);
+        const weightBimester3And4 = 3;
+        const generalAverage: number = ((+gradeBimester1 * weightBimester1And2) + (+gradeBimester2 * weightBimester1And2) + 
+        (+gradeBimester3 * weightBimester3And4) + (+gradeBimester4 * weightBimester3And4)) / 10;
+        return roundFloat(generalAverage, -2);
     }
     return (
         <>
@@ -44,6 +47,16 @@ export default function MinimumThirdAndFourthBimester() {
                     value={secondBimester}
                     label="Média 2° Bimestre"
                 />
+                <Input
+                    onChangeText={setThirdBimester}
+                    value={thirdBimester}
+                    label="Média 3° Bimestre"
+                />
+                <Input
+                    onChangeText={setFourthBimester}
+                    value={fourthBimester}
+                    label="Média 4° Bimestre"
+                />
                 <Button
                     onPress={handleCalculate}
                     label="Calcular"
@@ -55,5 +68,5 @@ export default function MinimumThirdAndFourthBimester() {
 }
 
 const styles = StyleSheet.create({
-    
+
 });
