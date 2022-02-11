@@ -5,17 +5,21 @@ import Input from '../shared/components/Input';
 import Button from '../shared/components/Button';
 import Template from '../shared/components/Template';
 import { useCalculate } from '../contexts/CalculateContext';
+import { useRoute } from '@react-navigation/native';
 
 export default function MinimumThirdAndFourthBimester() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult,
+        setMinValuePositiveResult, currentScreen } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'para ser aprovado no 3° e 4° bimestre');
-        setMaxValuePositiveResult(9.5);
-        setMinValuePositiveResult(0);
-    }, [])
+        if (currentScreen === 'MinimumThirdAndFourthBimester') {
+            setConfigScreen('Mínimo', 'para ser aprovado no 3° e 4° bimestre');
+            setMaxValuePositiveResult(6);
+            setMinValuePositiveResult(0);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);
@@ -55,5 +59,5 @@ export default function MinimumThirdAndFourthBimester() {
 }
 
 const styles = StyleSheet.create({
-    
+
 });

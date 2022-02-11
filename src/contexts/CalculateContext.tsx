@@ -14,6 +14,8 @@ interface CalculateContextData {
     setMaxValuePositiveResult: React.Dispatch<React.SetStateAction<number>>;
     minValuePositiveResult: number;
     setMinValuePositiveResult: React.Dispatch<React.SetStateAction<number>>;
+    currentScreen: string;
+    setCurrentScreen: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface ICalculateProviderProps {
@@ -30,6 +32,7 @@ export function CalculateProvider({ children }: ICalculateProviderProps) {
     const [minValuePositiveResult, setMinValuePositiveResult] = useState(0);
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
+    const [currentScreen, setCurrentScreen] = useState('MinimumThirdAndFourthBimester');
 
     function setConfigScreen(title: string, subtitle: string) {
         setTitle(title);
@@ -39,7 +42,8 @@ export function CalculateProvider({ children }: ICalculateProviderProps) {
     return (
         <CalculateContext.Provider value={{
             showResult, setShowResult, result, setResult, setConfigScreen, title, subtitle, messageResult,
-            setMessageResult, setMaxValuePositiveResult, maxValuePositiveResult, minValuePositiveResult, setMinValuePositiveResult
+            setMessageResult, setMaxValuePositiveResult, maxValuePositiveResult, minValuePositiveResult, 
+            setMinValuePositiveResult, currentScreen, setCurrentScreen
         }}>
             {children}
         </CalculateContext.Provider>

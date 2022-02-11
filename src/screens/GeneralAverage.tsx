@@ -5,19 +5,23 @@ import Input from '../shared/components/Input';
 import Button from '../shared/components/Button';
 import Template from '../shared/components/Template';
 import { useCalculate } from '../contexts/CalculateContext';
+import { useRoute,  } from '@react-navigation/native';
 
 export default function GeneralAverage() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
     const [thirdBimester, setThirdBimester] = useState<number | undefined | string>(undefined);
     const [fourthBimester, setFourthBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, 
+        setMinValuePositiveResult, currentScreen } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Média Geral', ', todos os bimestres');
-        setMaxValuePositiveResult(10);
-        setMinValuePositiveResult(6);
-    }, [])
+        if(currentScreen === 'AverageGeneral') {
+            setConfigScreen('Média', 'geral');
+            setMaxValuePositiveResult(10);
+            setMinValuePositiveResult(6);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);

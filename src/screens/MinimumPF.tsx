@@ -7,13 +7,16 @@ import { roundFloat } from "../shared/util/roundFloat";
 
 export default function MinimumPF() {
     const [generalAverage, setGeneralAverage] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult} = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, 
+        setMinValuePositiveResult, currentScreen} = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'na PF');
-        setMaxValuePositiveResult(6);
-        setMinValuePositiveResult(0);
-    }, [])
+        if(currentScreen === 'MinimumPF') {
+            setConfigScreen('Mínimo', 'na PF');
+            setMaxValuePositiveResult(6);
+            setMinValuePositiveResult(0);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);

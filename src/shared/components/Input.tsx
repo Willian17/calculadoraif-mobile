@@ -20,7 +20,9 @@ export default function Input({ value, onChangeText, label, max }: IInputProps) 
         const minValue = 0;
         const maxValue = max || 10;
         let value: string | number = text;
-        value = value?.replace(',', '.')
+        if(typeof value === 'string') {
+            value = value?.replace(',', '.')
+        }
         value = +value;
         value = (value > maxValue ?
             maxValue :

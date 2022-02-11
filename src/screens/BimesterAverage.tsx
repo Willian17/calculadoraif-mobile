@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
+import { useRoute } from "@react-navigation/native";
+import React, { useEffect, useState, useCallback } from "react";
 import { useCalculate } from "../contexts/CalculateContext";
 import Button from "../shared/components/Button";
 import Input from "../shared/components/Input";
 import Template from "../shared/components/Template";
-import { roundFloat } from "../shared/util/roundFloat";
 
-export default function BimesterAverage() {
+export default function BimesterAverage({navigation}: any) {
     const [grade1, setGrade1] = useState<number | undefined | string>(undefined);
     const [grade2, setGrade2] = useState<number | undefined | string>(undefined);
     const [grade3, setGrade3] = useState<number | undefined | string>(undefined);
     const [atitudinal, setAtitudinal] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult,
+        setMinValuePositiveResult, currentScreen } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Média', 'no bimestre');
-        setMaxValuePositiveResult(10);
-        setMinValuePositiveResult(6);
-    }, [])
+        if(currentScreen === 'AverageBimester') {
+            setConfigScreen('Média', 'no bimestre');
+            setMaxValuePositiveResult(10);
+            setMinValuePositiveResult(6);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);

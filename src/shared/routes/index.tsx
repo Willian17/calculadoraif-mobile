@@ -9,17 +9,22 @@ import MinimumPF from '../../screens/MinimumPF';
 import BimesterAverage from '../../screens/BimesterAverage';
 import GeneralAverage from '../../screens/GeneralAverage';
 import EndAverage from '../../screens/EndAverage';
+import { useCalculate } from '../../contexts/CalculateContext';
 
 const Drawer = createDrawerNavigator();
 
 export default function Routes() {
+    const { showResult, setCurrentScreen } = useCalculate();
     return (
-        <NavigationContainer >
+        <NavigationContainer onStateChange={(state) => {
+            setCurrentScreen(state?.routes[state.index].name as string)
+        }}>
             <Drawer.Navigator initialRouteName="MinimumThirdAndFourthBimester" drawerContent={CustomDrawerContent} screenOptions={
                 {
                     headerTitle: '',
                     headerStyle: {
                         backgroundColor: '#FAFAFA',
+                        elevation: 0,
                     },
                     headerLeftContainerStyle: {
                         marginTop: 20,
@@ -30,6 +35,7 @@ export default function Routes() {
                     drawerIcon: ({ color, size }) => (
                         <Feather name="menu" color={color} size={size} />
                     ),
+                    headerShown: !showResult
                     
                 }}>
                 <Drawer.Screen name="MinimumThirdAndFourthBimester" options={{

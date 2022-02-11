@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useCalculate } from "../contexts/CalculateContext";
 import Button from "../shared/components/Button";
 import Input from "../shared/components/Input";
@@ -8,13 +8,16 @@ import { roundFloat } from "../shared/util/roundFloat";
 export default function EndAverage() {
     const [generalAverage, setGeneralAverage] = useState<number | undefined | string>(undefined);
     const [gradePF, setGradePF] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, 
+        setMinValuePositiveResult, currentScreen } = useCalculate();
 
     useEffect(() => {
-        setConfigScreen('Média', 'final');
-        setMaxValuePositiveResult(10);
-        setMinValuePositiveResult(5);
-    }, [])
+        if(currentScreen === 'AverageEnd') {
+            setConfigScreen('Média', 'final');
+            setMaxValuePositiveResult(10);
+            setMinValuePositiveResult(5);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);
@@ -25,7 +28,6 @@ export default function EndAverage() {
 
     function calculateEndAverage(generalAverage: number, pf: number): number {
         const endAverage: number = (+generalAverage + +pf) / 2;
-        console.log((generalAverage + pf));
         return roundFloat(endAverage, -2)
     }
 

@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text } from "react-native";
 import { useCalculate } from "../contexts/CalculateContext";
@@ -9,45 +10,50 @@ import { roundFloat } from "../shared/util/roundFloat";
 export default function MinimumThirdBimester() {
     const [firstBimester, setFirstBimester] = useState<number | undefined | string>(undefined);
     const [secondBimester, setSecondBimester] = useState<number | undefined | string>(undefined);
-    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult, setMinValuePositiveResult } = useCalculate();
+    const { setShowResult, setResult, setConfigScreen, setMessageResult, setMaxValuePositiveResult,
+        setMinValuePositiveResult, currentScreen } = useCalculate();
+    const { name } = useRoute();
+
 
     useEffect(() => {
-        setConfigScreen('Mínimo', 'para ser aprovado no 3° bimestre');
-        setMaxValuePositiveResult(6);
-        setMinValuePositiveResult(0);
-    }, [])
+        if (currentScreen === 'MinimumThirdBimester') {
+            setConfigScreen('Mínimo', 'para ser aprovado no 3° bimestre');
+            setMaxValuePositiveResult(10);
+            setMinValuePositiveResult(0);
+        }
+    }, [currentScreen])
 
     function handleCalculate() {
         setShowResult(true);
         const result = calculateMinimumThirdBimester(firstBimester as any, secondBimester as any) as any;
-        setMessageResult(result > 10 ? 'Não é possível ser aprovado no 3° bimestre': 'Para ser aprovado no 3° bimestre');
+        setMessageResult(result > 10 ? 'Não é possível ser aprovado no 3° bimestre' : 'Para ser aprovado no 3° bimestre');
         setResult(result);
     }
 
-    function calculateMinimumThirdBimester(gradeBimester1: number, gradeBimester2: number): number { 
+    function calculateMinimumThirdBimester(gradeBimester1: number, gradeBimester2: number): number {
         const minimumTotal = 60;
         const weightBimester1And2 = 2;
-        const result: number = (minimumTotal - 
-          ((+gradeBimester1 * weightBimester1And2) + (+gradeBimester2 * weightBimester1And2))) / 3
-          return roundFloat(result, -2);
-      }
+        const result: number = (minimumTotal -
+            ((+gradeBimester1 * weightBimester1And2) + (+gradeBimester2 * weightBimester1And2))) / 3
+        return roundFloat(result, -2);
+    }
 
     return (
         <Template>
-              <Input
-                    onChangeText={setFirstBimester}
-                    value={firstBimester}
-                    label="Média 1° Bimestre"
-                />
-                <Input
-                    onChangeText={setSecondBimester}
-                    value={secondBimester}
-                    label="Média 2° Bimestre"
-                />
-                <Button
-                    onPress={handleCalculate}
-                    label="Calcular"
-                />
+            <Input
+                onChangeText={setFirstBimester}
+                value={firstBimester}
+                label="Média 1° Bimestre"
+            />
+            <Input
+                onChangeText={setSecondBimester}
+                value={secondBimester}
+                label="Média 2° Bimestre"
+            />
+            <Button
+                onPress={handleCalculate}
+                label="Calcular"
+            />
         </Template>
     )
 }
