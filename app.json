@@ -24,7 +24,7 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.williandev17.calculatorIfMobile"
+      "package": "com.williandev17.calculadoraIF"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

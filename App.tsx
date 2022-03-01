@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
 import AppProvider from './src/contexts';
 import Routes from './src/shared/routes';
-import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
-const fetchFonts = () => {
-  return Font.loadAsync({
+const fetchFonts = async () => {
+  await SplashScreen.hideAsync()
+  return await Font.loadAsync({
     'raleway-bold': require('./src/assets/fonts/Raleway-Bold.ttf'),
     'inter-bold': require('./src/assets/fonts/Inter-Bold.ttf'),
     'inter-regular': require('./src/assets/fonts/Inter-Regular.ttf'),
