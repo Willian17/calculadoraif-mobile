@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "calculadoraIF",
-    "slug": "calculadoraIF",
-    "version": "1.0.1",
+    "name": "CalculadoraIF",
+    "slug": "CalculadoraIF",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "splash": {
@@ -24,7 +24,8 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.williandev17.calculadoraIF"
+      "package": "com.williandev17.CalculadoraIF",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
