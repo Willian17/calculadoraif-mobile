@@ -1,13 +1,16 @@
+import 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
 import AppProvider from './src/contexts';
 import Routes from './src/shared/routes';
 
+import { enableScreens } from 'react-native-screens';
+
+enableScreens();
+
 const fetchFonts = async () => {
-  await SplashScreen.hideAsync()
   return await Font.loadAsync({
     'raleway-bold': require('./src/assets/fonts/Raleway-Bold.ttf'),
     'inter-bold': require('./src/assets/fonts/Inter-Bold.ttf'),
@@ -23,6 +26,7 @@ const fetchFonts = async () => {
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
 
+  
   if (!dataLoaded) {
     return (
       <AppLoading

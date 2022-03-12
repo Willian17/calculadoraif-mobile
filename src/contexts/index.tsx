@@ -7,6 +7,7 @@ interface IAppProviderProps {
 }
 
 export default function AppProvider({ children }: IAppProviderProps) {
+    console.log('AppProvider');
     return (
         <CalculateProvider>
             {children}
